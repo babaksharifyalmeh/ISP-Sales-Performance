@@ -1,0 +1,17 @@
+﻿{
+    "name": "Custom",
+    "textClasses": {
+        "label": {
+            "fontFace": "Tanha FD"
+        },
+        "callout": {
+            "fontFace": "Tanha FD"
+        },
+        "title": {
+            "fontFace": "Tanha FD"
+        },
+        "header": {
+            "fontFace": "Tanha FD"
+        }
+    }
+}
