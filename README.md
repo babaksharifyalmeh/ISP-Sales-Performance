@@ -192,3 +192,68 @@ This phase serves as the **decision-making foundation** for:
 
 For detailed references on column analysis, KPIs, and data risks, see Sections **1.3**, **1.4**, and **1.5** of this report.
 
+---
+
+## Phase 2 – Data Modeling & Relationships
+
+In **Phase 2** of the project, the primary focus was on designing the data model, defining a robust analytical structure, and establishing standard, best-practice relationships between tables.
+The objective of this phase was to create a scalable, high-performance foundation that enables accurate and reliable analysis within **Power BI**.
+
+---
+
+## 2.1 Data Modeling Approach
+
+For this project, a **Star Schema** data modeling approach was adopted.
+
+In this structure, **Fact_Sales** serves as the central fact table, containing transactional sales data and core numerical measures such as:
+
+* Net amount
+* Cost
+* Discount
+* Tax
+
+Surrounding the fact table, the following dimension tables were designed:
+
+* **Dim_Subscribers**: Contains descriptive attributes of subscribers, enabling customer-based analysis.
+* **Dim_Date**: A dedicated date dimension supporting both Gregorian and Persian calendars, enabling standardized time-based analysis and time intelligence.
+* **Dim_Measure**: A logical dimension used to manage KPIs and enable dynamic KPI selection within the reporting layer.
+
+The Star Schema was selected due to its simplicity, high readability, optimal performance in Power BI, and strong alignment with the nature of sales and transactional data.
+This approach minimizes relationship complexity, improves query performance, and facilitates future model expansion.
+
+---
+
+## 2.2 Data Model Diagram (Star Schema)
+
+> **![Star Schema data model diagram](Images\Model_Relashanship\Star_Model.png)**
+> *(This image should illustrate Fact_Sales at the center with Dim_Subscribers, Dim_Date, and Dim_Measure arranged around it in a star-shaped structure.)*
+
+---
+
+## 2.3 Data Relationships Design
+
+Following the model design, table relationships were defined in a controlled and standardized manner, adhering to analytical modeling best practices.
+
+* The relationship between **Dim_Subscribers** and **Fact_Sales** is defined through the *Subscriber ID* field and follows a **One-to-Many** cardinality.
+  Each subscriber can be associated with multiple sales records, with filter direction applied from the dimension table to the fact table. This enables sales analysis based on subscriber attributes.
+
+* The relationship between **Dim_Date** and **Fact_Sales** is established via the *Transaction Date* field and is also **One-to-Many**.
+  This structure supports period-based analysis, trend comparisons, and the use of standard time intelligence functions.
+
+* **Dim_Measure** is implemented as a **disconnected table**, meaning it has no physical relationship with the fact table.
+  It is used exclusively within the DAX layer to enable dynamic KPI selection and improve dashboard flexibility without increasing relationship complexity.
+
+* The **Reload** table is a standalone display table used solely to present the last data refresh timestamp and does not participate in analytical relationships.
+
+---
+
+## 2.4 Outcome of Phase 2
+
+The output of Phase 2 is a clear, stable, optimized, and extensible data model that:
+
+* Prevents calculation errors caused by ambiguous or incorrect relationships
+* Improves overall report performance
+* Provides a strong foundation for KPI definition and managerial dashboard development in subsequent phases
+
+This data model serves as the **core analytical backbone** for all analyses and visualizations developed in the next phases of the project.
+
