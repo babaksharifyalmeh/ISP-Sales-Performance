@@ -1,259 +1,296 @@
-
-# Phase 1 Report
-
-## Data Understanding, Business Framing & Analytical Design
+# 📊 ISP Sales Performance Dashboard – Power BI Project
 
 ---
 
-## Overview
+## 🖼 Dashboard Preview
 
-This document presents **Phase 1** of the analytics project, focusing on understanding the available data, framing the business problem, identifying key analytical requirements, and defining the overall reporting approach.
-This phase establishes the analytical foundation required for data modeling, dashboard development, and advanced analysis in subsequent phases.
+### Executive Sales Performance
 
----
+![Executive Dashboard](Images\Images-Dashboard\Report_1.png)
 
-## 1. Data Understanding & Structure Analysis
+### Employes Performance
 
-### 1.1 Initial Data Exploration
+![Executive Dashboard](Images\Images-Dashboard\Dashboard_Employes.png)
 
-At the beginning of the project, the available data consisted of two primary tables:
+### Geographic Performance
 
-* **Fact_Sales**
-  This table contains transactional sales data, including:
+![Geographic Dashboard](Images\Images-Dashboard\Dashboard_Geographic.png)
 
-  * Net amount
-  * Cost
-  * Discount
-  * Tax
-  * Transaction date
-  * Service type
-  * Package
-  * Purchase channel
-  * Invoice status
+### Service Performance
 
-  Each record represents a single sales event.
+![Service Dashboard](Images\Images-Dashboard\Dashboard_Service.png)
 
-* **Dim_Subscribers**
-  This table includes descriptive attributes of subscribers, such as:
+### Operational / All Reports
 
-  * Subscriber ID
-  * Province and city
-  * Customer type
-  * Service status
-  * Current package
-  * ARPU
-  * Customer lifecycle-related dates
-
-Based on this structure, **Fact_Sales** was identified as the fact table and **Dim_Subscribers** as the dimension table, with a relational link established through the **Subscriber ID** key.
+![Operational Dashboard](Images\Images-Dashboard\Report_2.png)
 
 ---
 
-## 2. Business & Industry Context
+# Project Overview
 
-### 1.2 Industry Identification and Business Domain
+This project presents a complete end-to-end Business Intelligence solution developed in **Power BI** for an Internet Service Provider (ISP).
 
-Based on column names and data values (e.g., service types such as ADSL, Wireless, TD-LTE, internet packages, installation and renewal statuses), the dataset was identified as belonging to the **Internet Service Provider (ISP) and telecommunications industry**.
+The objective of this dashboard is to provide:
 
-The data structure indicates that the core business focuses on:
+* Executive-level sales transparency
+* Service and package performance analysis
+* Geographic concentration risk assessment
+* Sales team operational performance monitoring
+* Customer behavior insights
 
-* Subscription-based sales
-* Service renewals
-* Management of individual and corporate customers
-* Revenue analysis by package and geographic region
+The solution follows a structured multi-phase BI development methodology including:
 
-This understanding was reinforced through initial data inspection and early alignment sessions with the business stakeholder.
-
----
-
-## 3. Data Quality Assessment
-
-### 1.3 Data Quality Review and Identified Issues
-
-A statistical review of columns and a sample inspection of approximately 100–200 rows revealed several data quality concerns, including:
-
-* Negative values in discount and tax fields
-* High variance in numeric measures such as net amount and ARPU
-* Invalid or extremely old dates (e.g., birth dates from 1841)
-* Non-meaningful textual values such as `"-----"`
-* Inconsistent naming conventions for packages
-
-These issues were documented as **data risks** to be addressed during the data cleansing and modeling phase.
+1. Business Understanding
+2. Data Modeling
+3. UX & Dashboard Design
+4. KPI Engineering
+5. Interactive Reporting & Drill-through
 
 ---
 
-## 4. Column Role Definition
+# Phase 1 – Data Understanding & Business Framing
 
-### 1.4 Analytical Role of Columns
+## Data Sources
 
-Without performing analysis at this stage, each column was classified based on its analytical role:
+Two primary datasets were provided:
 
-* **Measures**: Net amount, cost, discount, tax
-* **Dimensions**: Service type, province, city, package, purchase channel
-* **Keys / Identifiers**: Subscriber ID, invoice ID
+### Fact_Sales
 
-Additionally, decisions were made regarding:
+Transactional table containing:
 
-* Required data type conversions (e.g., transaction date from text to date)
-* Standardization of categorical values
-
-The full rationale for these decisions is documented in Section 1.4 of the report.
-
----
-
-## 5. Business KPIs Definition
-
-### 1.5 Identification of Key Business KPIs
-
-Key Performance Indicators (KPIs) were derived from **managerial questions**, not directly from the data itself, based on stakeholder discussions and decision-making needs.
-
-The primary KPIs include:
-
-* Total revenue
-* Gross profit
-* ARPU
-* Renewal-to-new-purchase ratio
-* Revenue by geographic region
-* Package performance
-
-All KPIs are:
-
-* Measurable
-* Actionable
-* Clearly explainable in one sentence
-  and directly support management decisions such as regional focus or discount policy optimization.
-
----
-
-## 6. Reporting Strategy & Audience
-
-### 1.6 Target Audience and Report Types
-
-The project output is designed to be **multi-layered**, addressing different stakeholder needs:
-
-* Executive summary dashboard for the CEO
-* Interactive analytical dashboard for marketing and sales teams
-* Operational reports for the support team
-* Full analytical access for the BI team
-
-**Power BI** was selected as the primary tool to enable filtering, drill-down, and interactive data exploration.
-
----
-
-## 7. Analytical Objective & Scope
-
-### 1.7 Analysis Goal and Type
-
-The primary objective of this analysis is to create transparency around:
-
-* Sales performance
-* Customer behavior
-* Package profitability
-
-to support data-driven managerial decision-making.
-
-Phase 1 focuses on **descriptive and diagnostic analysis**. Future phases may extend toward predictive analytics.
-Success criteria for this phase include data readiness and clarity of analytical questions required for dashboard design.
-
----
-
-## 8. Data Risks & Limitations
-
-### 1.8 Identified Risks and Constraints
-
-While the dataset volume is sufficient for analysis (over 38,000 sales records and 40,000 subscribers), several limitations were identified:
-
-* Missing or imprecise financial dates
-* Textual inconsistencies
-* Illogical values
-* Potential data confidentiality constraints
-
-Additionally, the data is not fully standardized and requires cleansing in **Power Query**.
-All risks have been logged, and mitigation actions are planned for the next phase.
-
----
-
-## 9. Phase 1 Summary & Readiness Assessment
-
-### 1.9 Phase 1 Conclusion
-
-By the end of Phase 1, the following elements were clearly defined:
-
-* Data structure and table roles
-* Data quality status
-* Key business KPIs
-* Reporting audiences
-* Visualization and analytical approach
-
-This phase serves as the **decision-making foundation** for:
-
-* Data model design
-* Power BI dashboard implementation
-* DAX measure development
-
-For detailed references on column analysis, KPIs, and data risks, see Sections **1.3**, **1.4**, and **1.5** of this report.
-
----
-
-## Phase 2 – Data Modeling & Relationships
-
-In **Phase 2** of the project, the primary focus was on designing the data model, defining a robust analytical structure, and establishing standard, best-practice relationships between tables.
-The objective of this phase was to create a scalable, high-performance foundation that enables accurate and reliable analysis within **Power BI**.
-
----
-
-## 2.1 Data Modeling Approach
-
-For this project, a **Star Schema** data modeling approach was adopted.
-
-In this structure, **Fact_Sales** serves as the central fact table, containing transactional sales data and core numerical measures such as:
-
-* Net amount
+* Net Amount
 * Cost
 * Discount
 * Tax
+* Transaction Date
+* Service Type
+* Package
+* Invoice Status
+* Sales User
 
-Surrounding the fact table, the following dimension tables were designed:
+Each row represents one sales event.
 
-* **Dim_Subscribers**: Contains descriptive attributes of subscribers, enabling customer-based analysis.
-* **Dim_Date**: A dedicated date dimension supporting both Gregorian and Persian calendars, enabling standardized time-based analysis and time intelligence.
-* **Dim_Measure**: A logical dimension used to manage KPIs and enable dynamic KPI selection within the reporting layer.
+### Dim_Subscribers
 
-The Star Schema was selected due to its simplicity, high readability, optimal performance in Power BI, and strong alignment with the nature of sales and transactional data.
-This approach minimizes relationship complexity, improves query performance, and facilitates future model expansion.
+Descriptive customer table containing:
 
----
+* Subscriber ID
+* Province / City
+* Customer Type (Individual / Corporate)
+* Current Package
+* ARPU
+* Lifecycle Information
 
-## 2.2 Data Model Diagram (Star Schema)
-
-> **![Star Schema data model diagram](Images\Model_Relashanship\Star_Model.png)**
-> *(This image should illustrate Fact_Sales at the center with Dim_Subscribers, Dim_Date, and Dim_Measure arranged around it in a star-shaped structure.)*
-
----
-
-## 2.3 Data Relationships Design
-
-Following the model design, table relationships were defined in a controlled and standardized manner, adhering to analytical modeling best practices.
-
-* The relationship between **Dim_Subscribers** and **Fact_Sales** is defined through the *Subscriber ID* field and follows a **One-to-Many** cardinality.
-  Each subscriber can be associated with multiple sales records, with filter direction applied from the dimension table to the fact table. This enables sales analysis based on subscriber attributes.
-
-* The relationship between **Dim_Date** and **Fact_Sales** is established via the *Transaction Date* field and is also **One-to-Many**.
-  This structure supports period-based analysis, trend comparisons, and the use of standard time intelligence functions.
-
-* **Dim_Measure** is implemented as a **disconnected table**, meaning it has no physical relationship with the fact table.
-  It is used exclusively within the DAX layer to enable dynamic KPI selection and improve dashboard flexibility without increasing relationship complexity.
-
-* The **Reload** table is a standalone display table used solely to present the last data refresh timestamp and does not participate in analytical relationships.
+Fact_Sales was identified as the central **fact table**, and Dim_Subscribers as a **dimension table**, linked through Subscriber ID.
 
 ---
 
-## 2.4 Outcome of Phase 2
+## Industry Context
 
-The output of Phase 2 is a clear, stable, optimized, and extensible data model that:
+Based on service types (ADSL, TD-LTE, Wireless), renewal patterns and subscription logic, the dataset belongs to the **ISP / Telecommunications industry**.
 
-* Prevents calculation errors caused by ambiguous or incorrect relationships
-* Improves overall report performance
-* Provides a strong foundation for KPI definition and managerial dashboard development in subsequent phases
+The business operates on:
 
-This data model serves as the **core analytical backbone** for all analyses and visualizations developed in the next phases of the project.
+* Subscription-based revenue
+* Service renewals
+* Regional sales distribution
+* ARPU-driven profitability
+
+---
+
+## Data Quality Assessment
+
+Identified issues:
+
+* Negative discount values
+* Invalid historical dates
+* High variance in ARPU
+* Text inconsistencies
+* Non-standard categorical values
+
+These were documented and addressed in the ETL phase.
+
+---
+
+## KPI Framework
+
+KPIs were derived from business questions rather than raw data fields.
+
+Core KPIs include:
+
+* Total Revenue
+* Total Profit
+* ARPU
+* Renewal Ratio
+* Revenue by Province
+* Revenue by Service
+* Sales Concentration Ratio
+* Profit Margin by Region
+
+All KPIs are measurable, actionable and decision-oriented.
+
+---
+
+# Phase 2 – Data Modeling (Star Schema)
+
+A **Star Schema** approach was implemented.
+
+### Fact Table
+
+* Fact_Sales
+
+### Dimension Tables
+
+* Dim_Subscribers
+* Dim_Date (Persian & Gregorian)
+* Dim_Measure (Disconnected KPI table)
+* Reload (Refresh tracking)
+
+### Relationships
+
+* Subscriber → One-to-Many → Sales
+* Date → One-to-Many → Sales
+* Dim_Measure → Disconnected (DAX layer)
+
+This structure ensures:
+
+* High performance
+* Clean filter direction
+* Accurate calculations
+* Future scalability
+
+---
+
+# Phase 3 – UX Design & Dashboard Architecture
+
+The dashboard follows a structured storytelling approach.
+
+## Page 1 – Sales Performance (Executive Overview)
+
+Decision Focus:
+
+* Is revenue growing?
+* Is profit aligned with revenue?
+* Is ARPU stable?
+
+Visuals:
+
+* KPI Cards (Revenue, Profit, Subscribers, ARPU)
+* Revenue vs Profit Trend (Line Chart)
+* Revenue Collection Status (Donut: Paid / Overdue / Unpaid)
+* Tooltip with MoM change
+
+---
+
+## Page 2 – Operational / Sales Team Performance
+
+Decision Focus:
+
+* Is revenue concentrated among few salespeople?
+* Does high volume equal high quality?
+* Is operational risk present?
+
+Visuals:
+
+* Top Salespeople by Revenue (Stacked by Customer Type)
+* Scatter: Volume vs Profit Quality
+* Clustered Bar: Working vs Non-Working Days
+* Active Employees (Working / Non-working)
+* Drill-through to Salesperson Profile Page
+
+Drill-through page includes:
+
+* Individual KPI summary
+* Monthly performance trend
+* Profit per order
+* ARPU contribution
+
+---
+
+## Page 3 – Geographic Performance
+
+Decision Focus:
+
+* Where is revenue concentrated?
+* Are high-sales provinces also high-profit?
+* Is there geographic concentration risk?
+
+Visuals:
+
+* Iran Map (Revenue-based gradient)
+* Revenue by Province (Bar)
+* Combo Chart: Revenue + ARPU
+* High-ARPU Cities Analysis
+
+---
+
+## Page 4 – Service Performance
+
+Decision Focus:
+
+* Which services generate sustainable profit?
+* Which packages drive revenue?
+* How does ARPU impact service performance?
+
+Visuals:
+
+* Revenue by Service
+* Service Status Distribution (100% Stacked)
+* Top Packages
+* Revenue by Service (Stacked Column with Small Multiples by ARPU Category)
+
+---
+
+## Page 5 – Customer Behavior Analysis
+
+Decision Focus:
+
+* What percentage of customers are active?
+* What is retention performance?
+* Which customer segment generates highest value?
+
+Visuals:
+
+* Active vs Inactive Ratio
+* Renewal Ratio
+* Revenue by Customer Type
+* ARPU Distribution
+
+---
+
+# Advanced Features Implemented
+
+* Drill-through navigation (Salesperson level)
+* Tooltip-driven micro analysis
+* Small Multiples for ARPU segmentation
+* Dynamic KPI selection (Dim_Measure)
+* Working vs Non-Working day grouping
+* Concentration risk detection logic
+* Clean visual hierarchy
+* Custom theme (Neon Yellow / Dark UI)
+
+---
+
+# Technical Stack
+
+* Power BI Desktop
+* Power Query (ETL)
+* DAX Measures
+* Star Schema Modeling
+* Custom JSON Theme
+* Git version control
+
+---
+
+# Project Outcome
+
+The final dashboard enables:
+
+* Executive-level decision making
+* Risk detection in sales operations
+* Service-level profitability evaluation
+* Geographic performance assessment
+* Data-driven strategic planning
+
+This solution transforms raw ISP sales data into a structured, scalable, and decision-focused analytical platform.
 
