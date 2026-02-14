@@ -6,23 +6,23 @@
 
 ### Executive Sales Performance
 
-![Executive Dashboard](Images\Images-Dashboard\Report_1.png)
+![Executive Dashboard](Images/Images-Dashboard/Report_1.png)
 
 ### Employes Performance
 
-![Executive Dashboard](Images\Images-Dashboard\Dashboard_Employes.png)
+![Executive Dashboard](Images/Images-Dashboard/Dashboard_Employes.png)
 
 ### Geographic Performance
 
-![Geographic Dashboard](Images\Images-Dashboard\Dashboard_Geographic.png)
+![Geographic Dashboard](Images/Images-Dashboard/Dashboard_Geographic.png)
 
 ### Service Performance
 
-![Service Dashboard](Images\Images-Dashboard\Dashboard_Service.png)
+![Service Dashboard](Images/Images-Dashboard/Dashboard_Service.png)
 
 ### Operational / All Reports
 
-![Operational Dashboard](Images\Images-Dashboard\Report_2.png)
+![Operational Dashboard](Images/Images-Dashboard/Report_2.png)
 
 ---
 
